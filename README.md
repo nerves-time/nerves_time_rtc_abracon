@@ -1,5 +1,8 @@
 # NervesTime.RTC.Abracon
 
+[![CircleCI](https://circleci.com/gh/nerves-time/nerves_time_rtc_abracon.svg?style=svg)](https://circleci.com/gh/nerves-time/nerves_time_rtc_abracon)
+[![Hex version](https://img.shields.io/hexpm/v/nerves_time_rtc_abracon.svg "Hex version")](https://hex.pm/packages/nerves_time_rtc_abracon)
+
 NervesTime.RTC implementation for common Abracon Real-time clock modules. The
 following are supported:
 
