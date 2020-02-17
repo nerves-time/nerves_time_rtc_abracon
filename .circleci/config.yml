@@ -45,9 +45,9 @@ jobs:
       - run: mix format --check-formatted
       - run: mix compile
       - run: mix docs
-      - run: mix hex.build
       - run: mix test
       - run: mix dialyzer --halt-exit-status
+      - run: mix hex.build
       - save_cache:
           key: v1-mix-cache-{{ checksum "mix.lock" }}
           paths:
