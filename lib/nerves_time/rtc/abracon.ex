@@ -41,27 +41,20 @@ defmodule NervesTime.RTC.Abracon do
   end
 
   @impl NervesTime.RealTimeClock
-  def update(state) do
-    set_time_to_rtc(state, NaiveDateTime.utc_now())
+  def set_time(state, now) do
+    registers = Date.encode(now)
+
+    _ = I2C.write(state.i2c, state.address, [0, registers])
+    state
   end
 
   @impl NervesTime.RealTimeClock
-  def time(state) do
-    get_time_from_rtc(state)
-  end
-
-  @spec set_time_to_rtc(state, NaiveDateTime.t()) :: :ok | {:error, term()}
-  defp set_time_to_rtc(state, %NaiveDateTime{} = date_time) do
-    registers = Date.encode(date_time)
-
-    I2C.write(state.i2c, state.address, [0, registers])
-  end
-
-  @spec get_time_from_rtc(state) :: {:ok, NaiveDateTime.t()} | {:error, term()}
-  defp get_time_from_rtc(state) do
-    with {:ok, registers} <-
-           I2C.write_read(state.i2c, state.address, <<0>>, 7) do
-      Date.decode(registers)
+  def get_time(state) do
+    with {:ok, registers} <- I2C.write_read(state.i2c, state.address, <<0>>, 7),
+         {:ok, time} <- Date.decode(registers) do
+      {:ok, time, state}
+    else
+      _any_error -> {:noset, state}
     end
   end
 
