@@ -1,7 +1,7 @@
 defmodule NervesTime.RTC.Abracon.Date do
   @moduledoc false
 
-  alias NervesTime.RTC.BCD
+  alias NervesTime.RealTimeClock.BCD
 
   @doc """
   Return a list of commands for reading the configuration registers
