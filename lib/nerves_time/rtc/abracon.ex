@@ -42,10 +42,14 @@ defmodule NervesTime.RTC.Abracon do
 
   @impl NervesTime.RealTimeClock
   def set_time(state, now) do
-    registers = Date.encode(now)
-
-    _ = I2C.write(state.i2c, state.address, [0, registers])
-    state
+    with {:ok, registers} <- Date.encode(now),
+         :ok <- I2C.write(state.i2c, state.address, [0, registers]) do
+      state
+    else
+      error ->
+        _ = Logger.error("Error setting Abracon RTC to #{inspect(now)}: #{inspect(error)}")
+        state
+    end
   end
 
   @impl NervesTime.RealTimeClock
@@ -54,7 +58,9 @@ defmodule NervesTime.RTC.Abracon do
          {:ok, time} <- Date.decode(registers) do
       {:ok, time, state}
     else
-      _any_error -> {:noset, state}
+      any_error ->
+        _ = Logger.error("Abracon RTC not set or has an error: #{inspect(any_error)}")
+        {:unset, state}
     end
   end
 
