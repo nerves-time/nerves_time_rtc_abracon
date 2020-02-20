@@ -1,8 +1,24 @@
 defmodule NervesTime.RTC.Abracon do
   @moduledoc """
+  Abracon RTC implementation for NervesTime
+
+  To configure NervesTime to use this module, update the `:nerves_time` application
+  environment like this:
+
+  ```elixir
+  config :nerves_time, rtc: NervesTime.RTC.Abracon
+  ```
+
+  If not using `"i2c-1"` or the default I2C bus address, specify them like this:
+
+  ```elixir
+  config :nerves_time, rtc: {NervesTime.RTC.Abracon, [bus_name: "i2c-2", address: 0x69]}
+  ```
+
+  Check the logs for error messages if the RTC doesn't appear to work.
+
   See https://abracon.com/Support/AppsManuals/Precisiontiming/Application%20Manual%20AB-RTCMC-32.768kHz-IBO5-S3.pdf
-
-
+  for implementation details.
   """
 
   @behaviour NervesTime.RealTimeClock
@@ -22,7 +38,6 @@ defmodule NervesTime.RTC.Abracon do
           address: I2C.address()
         }
 
-  @doc false
   @impl NervesTime.RealTimeClock
   def init(args) do
     bus_name = Keyword.get(args, :bus_name, @default_bus_name)
