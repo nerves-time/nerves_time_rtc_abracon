@@ -27,21 +27,31 @@ defmodule NervesTime.RTC.Abracon.MixProject do
     ]
   end
 
+  defp description do
+    "NervesTime.RTC implementation for Abracon Real-time Clocks"
+  end
+
+  defp package do
+    %{
+      files: [
+        "lib",
+        "test",
+        "mix.exs",
+        "README.md",
+        "LICENSE",
+        "CHANGELOG.md"
+      ],
+      licenses: ["Apache-2.0"],
+      links: %{"GitHub" => @source_url}
+    }
+  end
+
   defp deps do
     [
       {:circuits_i2c, "~> 0.3.6"},
       {:nerves_time, "~> 0.4.0"},
       {:ex_doc, "~> 0.19", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0.0-rc.6", only: [:dev, :test], runtime: false}
-    ]
-  end
-
-  def description, do: "NervesTime.RTC implementation for Abracon chips"
-
-  def package do
-    [
-      licenses: ["Apache-2.0"],
-      links: %{"GitHub" => @source_url}
     ]
   end
 
