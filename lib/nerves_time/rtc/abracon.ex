@@ -56,6 +56,9 @@ defmodule NervesTime.RTC.Abracon do
   end
 
   @impl NervesTime.RealTimeClock
+  def terminate(_state), do: :ok
+
+  @impl NervesTime.RealTimeClock
   def set_time(state, now) do
     with {:ok, registers} <- Date.encode(now),
          :ok <- I2C.write(state.i2c, state.address, [0, registers]) do
