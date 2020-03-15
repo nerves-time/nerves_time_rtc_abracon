@@ -49,7 +49,7 @@ defmodule NervesTime.RTC.Abracon.MixProject do
   defp deps do
     [
       {:circuits_i2c, "~> 0.3.6"},
-      {:nerves_time, "~> 0.4.0"},
+      {:nerves_time, "~> 0.4.1"},
       {:ex_doc, "~> 0.19", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0.0-rc.6", only: [:dev, :test], runtime: false}
     ]
