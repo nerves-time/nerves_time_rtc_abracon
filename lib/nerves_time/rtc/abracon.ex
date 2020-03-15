@@ -44,14 +44,8 @@ defmodule NervesTime.RTC.Abracon do
     address = Keyword.get(args, :address, @default_address)
 
     with {:ok, i2c} <- I2C.open(bus_name),
-         true <- rtc_available?(i2c, address) do
+         :ok <- probe(i2c, address) do
       {:ok, %{i2c: i2c, bus_name: bus_name, address: address}}
-    else
-      {:error, _} = error ->
-        error
-
-      error ->
-        {:error, error}
     end
   end
 
@@ -82,17 +76,17 @@ defmodule NervesTime.RTC.Abracon do
     end
   end
 
-  @spec rtc_available?(I2C.bus(), I2C.address()) :: boolean()
-  defp rtc_available?(i2c, address) do
+  @spec probe(I2C.bus(), I2C.address()) :: :ok | {:error, String.t()}
+  defp probe(i2c, address) do
     case I2C.write_read(i2c, address, <<0x28>>, 7) do
       {:ok, id_info} ->
-        supported?(ID.decode(id_info))
+        check_id(ID.decode(id_info))
 
       {:error, :i2c_nak} ->
-        false
+        {:error, "RTC not found at #{address}"}
     end
   end
 
-  defp supported?({:ok, %{id: :ab_rtcmc_32768khz_ibo5_s3}}), do: true
-  defp supported?(_other), do: false
+  defp check_id({:ok, %{id: :ab_rtcmc_32768khz_ibo5_s3}}), do: :ok
+  defp check_id(other), do: {:error, "Unexpected response when probing RTC: #{inspect(other)}"}
 end
