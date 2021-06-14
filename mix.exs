@@ -17,7 +17,13 @@ defmodule NervesTime.RTC.Abracon.MixProject do
       docs: docs(),
       dialyzer: [
         flags: [:unmatched_returns, :error_handling, :race_conditions, :underspecs]
-      ]
+      ],
+      deps: deps(),
+      preferred_cli_env: %{
+        docs: :docs,
+        "hex.publish": :docs,
+        "hex.build": :docs
+      }
     ]
   end
 
