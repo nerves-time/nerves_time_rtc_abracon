@@ -1,6 +1,6 @@
-defmodule NervesTime.RTC.Abracon.ConfigurationTest do
+defmodule NervesTime.RTC.Abracon.IBO5.ConfigurationTest do
   use ExUnit.Case
-  alias NervesTime.RTC.Abracon.Configuration
+  alias NervesTime.RTC.Abracon.IBO5.Configuration
 
   test "decodes configuration" do
     assert Configuration.decode(<<19, 60>>) ==

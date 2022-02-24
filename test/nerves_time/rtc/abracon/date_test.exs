@@ -1,6 +1,6 @@
-defmodule NervesTime.RTC.Abracon.DateTest do
+defmodule NervesTime.RTC.Abracon.IBO5.DateTest do
   use ExUnit.Case
-  alias NervesTime.RTC.Abracon.Date
+  alias NervesTime.RTC.Abracon.IBO5.Date
 
   test "decodes date" do
     assert Date.decode(<<1, 2, 3, 4, 5, 6, 7>>) ==

@@ -1,4 +1,4 @@
-defmodule NervesTime.RTC.Abracon.Configuration do
+defmodule NervesTime.RTC.Abracon.IBO5.Configuration do
   @moduledoc false
 
   @type bit() :: 0 | 1
