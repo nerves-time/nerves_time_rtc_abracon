@@ -20,16 +20,16 @@ def deps do
 end
 ```
 
-And then update your `:nerves_time` configuration to point to it:
+And then update your `:nerves_time` configuration to point to your module type:
 
 ```elixir
-config :nerves_time, rtc: NervesTime.RTC.Abracon
+config :nerves_time, rtc: NervesTime.RTC.Abracon.IBO5
 ```
 
 It's possible to override the default I2C bus and address via options:
 
 ```elixir
-config :nerves_time, rtc: {NervesTime.RTC.Abracon, [bus_name: "i2c-2", address:
+config :nerves_time, rtc: {NervesTime.RTC.Abracon.IBO5, [bus_name: "i2c-2", address:
 0x69]}
 ```
 

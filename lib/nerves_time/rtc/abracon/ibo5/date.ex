@@ -1,4 +1,4 @@
-defmodule NervesTime.RTC.Abracon.Date do
+defmodule NervesTime.RTC.Abracon.IBO5.Date do
   @moduledoc false
 
   alias NervesTime.RealTimeClock.BCD
