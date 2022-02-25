@@ -1,7 +1,7 @@
 defmodule NervesTime.RTC.Abracon.MixProject do
   use Mix.Project
 
-  @version "0.1.1"
+  @version "0.2.0"
   @source_url "https://github.com/nerves-time/nerves_time_rtc_abracon"
 
   def project do
