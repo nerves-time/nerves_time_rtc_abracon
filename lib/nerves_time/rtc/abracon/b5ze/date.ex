@@ -17,6 +17,8 @@ defmodule NervesTime.RTC.Abracon.B5ZE.Date do
   This only returns years between 2000 and 2099.
   """
   @spec decode(<<_::56>>) :: {:ok, NaiveDateTime.t()} | {:error, any()}
+  def decode(<<1::1, _::7, _rem::binary>>), do: {:error, :clock_integrity_not_guaranteed}
+
   def decode(<<seconds_bcd, minutes_bcd, hours24_bcd, day_bcd, _weekday, month_bcd, year_bcd>>) do
     NaiveDateTime.new(
       2000 + BCD.to_integer(year_bcd),
