@@ -15,6 +15,10 @@ defmodule NervesTime.RTC.Abracon.B5ZE.DateTest do
     assert Date.decode(<<"wat">>) == {:error, :invalid}
   end
 
+  test "does not decode date if clock integrity is not guaranteed" do
+    assert Date.decode(<<160, 3, 4, 5, 2, 6, 7>>) == {:error, :clock_integrity_not_guaranteed}
+  end
+
   test "encodes date" do
     assert Date.encode(~N[2007-06-05 04:03:02]) == {:ok, <<2, 3, 4, 5, 2, 6, 7>>}
 
