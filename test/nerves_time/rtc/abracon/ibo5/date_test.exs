@@ -7,6 +7,14 @@ defmodule NervesTime.RTC.Abracon.IBO5.DateTest do
              {:ok, ~N[2007-06-05 04:03:02.01]}
   end
 
+  test "does not return invalid date" do
+    assert Date.decode(<<1, 2, 0, 0, 0, 0, 7>>) == {:error, :invalid_date}
+  end
+
+  test "does not attempt decode on invalid binary" do
+    assert Date.decode(<<"wat">>) == {:error, :invalid}
+  end
+
   test "encodes date" do
     assert Date.encode(~N[2007-06-05 04:03:02.01]) == {:ok, <<1, 2, 3, 4, 5, 6, 7>>}
 
