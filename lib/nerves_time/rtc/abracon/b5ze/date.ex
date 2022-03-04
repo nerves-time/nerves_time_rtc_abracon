@@ -18,15 +18,14 @@ defmodule NervesTime.RTC.Abracon.B5ZE.Date do
   """
   @spec decode(<<_::56>>) :: {:ok, NaiveDateTime.t()} | {:error, any()}
   def decode(<<seconds_bcd, minutes_bcd, hours24_bcd, day_bcd, _weekday, month_bcd, year_bcd>>) do
-    {:ok,
-     %NaiveDateTime{
-       second: BCD.to_integer(seconds_bcd),
-       minute: BCD.to_integer(minutes_bcd),
-       hour: BCD.to_integer(hours24_bcd),
-       day: BCD.to_integer(day_bcd),
-       month: BCD.to_integer(month_bcd),
-       year: 2000 + BCD.to_integer(year_bcd)
-     }}
+    NaiveDateTime.new(
+      2000 + BCD.to_integer(year_bcd),
+      BCD.to_integer(month_bcd),
+      BCD.to_integer(day_bcd),
+      BCD.to_integer(hours24_bcd),
+      BCD.to_integer(minutes_bcd),
+      BCD.to_integer(seconds_bcd)
+    )
   end
 
   def decode(_other), do: {:error, :invalid}

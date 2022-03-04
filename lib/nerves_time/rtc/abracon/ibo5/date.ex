@@ -20,16 +20,15 @@ defmodule NervesTime.RTC.Abracon.IBO5.Date do
   def decode(
         <<hundredths_bcd, seconds_bcd, minutes_bcd, hours24_bcd, day_bcd, month_bcd, year_bcd>>
       ) do
-    {:ok,
-     %NaiveDateTime{
-       microsecond: {BCD.to_integer(hundredths_bcd) * 10000, 2},
-       second: BCD.to_integer(seconds_bcd),
-       minute: BCD.to_integer(minutes_bcd),
-       hour: BCD.to_integer(hours24_bcd),
-       day: BCD.to_integer(day_bcd),
-       month: BCD.to_integer(month_bcd),
-       year: 2000 + BCD.to_integer(year_bcd)
-     }}
+    NaiveDateTime.new(
+      2000 + BCD.to_integer(year_bcd),
+      BCD.to_integer(month_bcd),
+      BCD.to_integer(day_bcd),
+      BCD.to_integer(hours24_bcd),
+      BCD.to_integer(minutes_bcd),
+      BCD.to_integer(seconds_bcd),
+      {BCD.to_integer(hundredths_bcd) * 10000, 2}
+    )
   end
 
   def decode(_other), do: {:error, :invalid}
