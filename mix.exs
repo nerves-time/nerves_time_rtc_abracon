@@ -53,7 +53,8 @@ defmodule NervesTime.RTC.Abracon.MixProject do
         "AB-RTCMC-32.768kHz-IBO5-S3" =>
           "https://abracon.com/Support/AppsManuals/Precisiontiming/Application%20Manual%20AB-RTCMC-32.768kHz-IBO5-S3.pdf",
         "AB-RTCMC-32.768kHz-B5ZE-S3" =>
-          "https://abracon.com/realtimeclock/AB-RTCMC-32.768kHz-B5ZE-S3-Application-Manual.pdf"
+          "https://abracon.com/realtimeclock/AB-RTCMC-32.768kHz-B5ZE-S3-Application-Manual.pdf",
+        "AB0805-T3" => "https://abracon.com/Precisiontiming/AB08X5-RTC.PDF"
       }
     }
   end
