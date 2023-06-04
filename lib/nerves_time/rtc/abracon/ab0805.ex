@@ -33,7 +33,7 @@ defmodule NervesTime.RTC.Abracon.AB0805 do
 
   @typedoc false
   @type state :: %{
-          i2c: I2C.bus(),
+          i2c: I2C.Bus.t(),
           bus_name: String.t(),
           address: I2C.address(),
           config: Configuration.t()
