@@ -33,7 +33,7 @@ defmodule NervesTime.RTC.Abracon.IBO5 do
 
   @typedoc false
   @type state :: %{
-          i2c: I2C.bus(),
+          i2c: I2C.Bus.t(),
           bus_name: String.t(),
           address: I2C.address()
         }
@@ -76,7 +76,7 @@ defmodule NervesTime.RTC.Abracon.IBO5 do
     end
   end
 
-  @spec probe(I2C.bus(), I2C.address()) :: :ok | {:error, String.t()}
+  @spec probe(I2C.Bus.t(), I2C.address()) :: :ok | {:error, String.t()}
   defp probe(i2c, address) do
     case I2C.write_read(i2c, address, <<0x28>>, 7) do
       {:ok, id_info} ->
