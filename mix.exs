@@ -44,7 +44,9 @@ defmodule NervesTime.RTC.Abracon.MixProject do
         "test",
         "mix.exs",
         "README.md",
-        "LICENSE",
+        "LICENSES",
+        "NOTICE",
+        "REUSE.toml",
         "CHANGELOG.md"
       ],
       licenses: ["Apache-2.0"],
@@ -54,7 +56,9 @@ defmodule NervesTime.RTC.Abracon.MixProject do
           "https://abracon.com/Support/AppsManuals/Precisiontiming/Application%20Manual%20AB-RTCMC-32.768kHz-IBO5-S3.pdf",
         "AB-RTCMC-32.768kHz-B5ZE-S3" =>
           "https://abracon.com/realtimeclock/AB-RTCMC-32.768kHz-B5ZE-S3-Application-Manual.pdf",
-        "AB0805-T3" => "https://abracon.com/Precisiontiming/AB08X5-RTC.PDF"
+        "AB0805-T3" => "https://abracon.com/Precisiontiming/AB08X5-RTC.PDF",
+        "REUSE Compliance" =>
+          "https://api.reuse.software/info/github.com/nerves-time/nerves_time_rtc_abracon"
       }
     }
   end
