@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2022 Connor Rigby
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 defmodule NervesTime.RTC.Abracon.AB0805.Configuration do
   @type bit() :: 0 | 1
   @type t :: %{

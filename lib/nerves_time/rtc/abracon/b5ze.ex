@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2022 Jon Carstens
+# SPDX-FileCopyrightText: 2023 Masatoshi Nishiguchi
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 defmodule NervesTime.RTC.Abracon.B5ZE do
   @moduledoc """
   Abracon AB-RTCMC-32.768kHz-B5ZE-S3 RTC implementation for NervesTime

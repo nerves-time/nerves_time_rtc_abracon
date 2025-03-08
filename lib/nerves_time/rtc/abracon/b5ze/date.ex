@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2022 Jon Carstens
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 defmodule NervesTime.RTC.Abracon.B5ZE.Date do
   @moduledoc false
 
