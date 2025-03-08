@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2022 Connor Rigby
+# SPDX-FileCopyrightText: 2023 Masatoshi Nishiguchi
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 defmodule NervesTime.RTC.Abracon.AB0805 do
   @moduledoc """
   Abracon AB0805-T3 RTC implementation for NervesTime
