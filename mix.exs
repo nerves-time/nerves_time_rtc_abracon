@@ -8,7 +8,7 @@ defmodule NervesTime.RTC.Abracon.MixProject do
     [
       app: :nerves_time_rtc_abracon,
       version: @version,
-      elixir: "~> 1.11",
+      elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       description: description(),
